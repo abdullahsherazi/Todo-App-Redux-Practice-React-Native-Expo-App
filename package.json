@@ -16,7 +16,9 @@
     "react-native-gesture-handler": "^1.0.17",
     "react-native-paper": "^2.13.0",
     "react-navigation": "^3.3.2",
-    "react-navigation-material-bottom-tabs": "^1.0.0"
+    "react-navigation-material-bottom-tabs": "^1.0.0",
+    "react-redux": "^6.0.1",
+    "redux": "^4.0.1"
   },
   "devDependencies": {
     "babel-preset-expo": "^5.0.0"
