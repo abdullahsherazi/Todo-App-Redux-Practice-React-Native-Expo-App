@@ -6,8 +6,12 @@ import {View,Text,TextInput} from "react-native";
 class RenderTodo extends Component{
     
   editText=(id,editText)=>{
+    if(editText!==""){
         this.props.dispatch({ type: 'EDIT_TEXT', id,editText })
-        this.setState({editId:0})
+        this.setState({editId:0})}
+        else 
+        // if in editing text is null then todo will be deleted
+        this.props.deleteTodo(id)
      }
 
    editId=()=>{

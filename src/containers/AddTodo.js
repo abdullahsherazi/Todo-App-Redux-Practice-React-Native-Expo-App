@@ -10,9 +10,12 @@ class AddTodo extends Component {
     }
 
     addTodo = (text) => {
+        // empty todo will not be added
+        if(text!==""){
         this.props.dispatch({ type: 'ADD_TODO', text })
         this.setState({ text: '' })
     }
+}
 
     render() {
         return (
