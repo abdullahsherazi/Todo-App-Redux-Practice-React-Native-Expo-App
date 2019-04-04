@@ -2,18 +2,16 @@ import React, { Component } from "react";
 import { connect } from 'react-redux'
 import { Entypo } from '@expo/vector-icons'
 import { View,Text,StyleSheet,ScrollView } from "react-native";
-import AddTodo from './containers/AddTodo'
-import RenderTodo from './containers/RenderTodo'
+import AddTodo from './AddTodo'
+import RenderTodo from './RenderTodo'
 
 const mapStateToProps = state => ({
+    // state.todos coz the state handled by todos reducer is todo,
+    // one reducer should only handle one state  
     todos: state.todos
 })
 
 class TodoApp extends Component {
-    deleteTodo = (id) => {
-       this.props.dispatch({ type: 'DELETE_TODO', id })
-    }
-  
     render() {
         return (
             <View style={styles.container}>
@@ -32,7 +30,7 @@ class TodoApp extends Component {
 {/* here all todos will come through mapping */}
                 <ScrollView style={{backgroundColor:"#e6e6e6"}}>
                 {this.props.todos.map(todo =>
-                 <RenderTodo key={todo.id} text={todo.text} id={todo.id} deleteTodo={this.deleteTodo} />
+                 <RenderTodo key={todo.id} text={todo.text} id={todo.id} />
                  )}
                 </ScrollView>
             </View>

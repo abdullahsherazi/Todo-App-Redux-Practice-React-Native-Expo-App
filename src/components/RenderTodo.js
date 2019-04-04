@@ -2,15 +2,27 @@ import { MaterialCommunityIcons } from '@expo/vector-icons'
 import { connect } from 'react-redux'
 import React,{Component} from "react";
 import {View,Text,TextInput} from "react-native";
+import {editText,deleteTodo } from '../actions/actionCreater';
+
+const mapDispatchToProps =(dispatch)=>({
+  editText:(id,edit_text)=>{
+    dispatch(editText(id,edit_text))
+   },
+  deleteTodo:(id) => {
+     dispatch(deleteTodo(id))
+   }
+})
 
 class RenderTodo extends Component{
     
-  editText=(id,editText)=>{
-    if(editText!==""){
-        this.props.dispatch({ type: 'EDIT_TEXT', id,editText })
+  editText=(id,edit_text)=>{
+    if(edit_text!==""){
+    // Now calling the editText method in action file through mapDispatchToProps method above,
+    // didn't do the whole thing in mapDispatch method above, coz can't access state there..
+        this.props.editText(id,edit_text)
         this.setState({editId:0})}
         else 
-        // if in editing text is null then todo will be deleted
+    // if in editing text is null then todo will be deleted
         this.props.deleteTodo(id)
      }
 
@@ -50,4 +62,4 @@ class RenderTodo extends Component{
         </View>   
     )}       
  }
- export default connect()(RenderTodo)
+ export default connect(null,mapDispatchToProps)(RenderTodo)

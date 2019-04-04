@@ -2,7 +2,14 @@ import React, { Component } from "react";
 import {View,StyleSheet,TextInput} from "react-native";
 import { MaterialIcons } from '@expo/vector-icons'
 import { connect } from 'react-redux'
+import { addTodo } from '../actions/actionCreater';
 
+const mapDispatchToProps = (dispatch)=>({
+    addTodo:(text)=>{
+       dispatch(addTodo(text))
+     }
+  })
+  
 class AddTodo extends Component {
 
     state = {
@@ -12,7 +19,9 @@ class AddTodo extends Component {
     addTodo = (text) => {
         // empty todo will not be added
         if(text!==""){
-        this.props.dispatch({ type: 'ADD_TODO', text })
+        // Now calling the addTodo method in action file through mapDispatchToProps method above
+        // didn't do the whole thing in mapDispatch method above, coz can't access state there..
+        this.props.addTodo(text)
         this.setState({ text: '' })
     }
 }
@@ -34,7 +43,7 @@ class AddTodo extends Component {
         );
     }
 }
-export default connect()(AddTodo);
+export default connect(null,mapDispatchToProps)(AddTodo);
 
 const styles = StyleSheet.create({
     Input:{
