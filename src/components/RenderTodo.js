@@ -45,9 +45,9 @@ class RenderTodo extends Component{
 // If editId is 0
            <View style={{flexDirection:"row",marginLeft:"5%",marginRight:"5%",marginTop:5,borderRadius:30,backgroundColor:"white",alignItems:"center"}}>  
              <Text style={{marginLeft:5,fontSize: 15,color:"black",width:"80%"}}>{this.props.text}</Text>
-             <MaterialCommunityIcons name="delete-circle" size={30} color="#66bb6a"
+             <MaterialCommunityIcons name="delete-circle"  size={30} color="#66bb6a" style={{width:"9%",height:"100%"}}
                onPress={ () => this.props.deleteTodo(this.props.id)}  />
-             <MaterialCommunityIcons name="pencil-circle" size={30} color="#66bb6a" 
+             <MaterialCommunityIcons name="pencil-circle" size={30} color="#66bb6a" style={{width:"10%",height:"100%"}}
                onPress={()=>this.editId()}/>
            </View>
 :
@@ -55,7 +55,7 @@ class RenderTodo extends Component{
            <View style={{flexDirection:"row",marginLeft:"5%",marginRight:"5%",marginTop:5,borderRadius:30,backgroundColor:"#dd2c00",alignItems:"center"}}>
              <TextInput style={{marginLeft:5,fontSize: 15,color:"black",width:"88%"}}
                value={this.state.text}  onChangeText={(text) => this.setState({ text })} />
-             <MaterialCommunityIcons name="pencil-circle" size={30} style={{ color: 'white'}} 
+             <MaterialCommunityIcons name="pencil-circle" size={30} style={{ color:'white',width:"10%",height:"100%"}} 
                onPress={ ()=>this.editText(this.props.id,this.state.text) }/>
             </View>
         }
